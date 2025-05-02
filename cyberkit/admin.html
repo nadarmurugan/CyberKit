@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CyberGate Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="margin:0;background:#1a1a1a;height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;color:#00ff00">
+
+<div style="background:#0d0d0d;padding:40px;border-radius:10px;border:2px solid #00ff00;box-shadow:0 0 20px #00ff0055">
+    <h1 style="text-align:center;margin-bottom:30px"><i class="fa fa-lock"></i> ADMIN ACCESS</h1>
+    
+    <form onsubmit="return validateLogin()" style="display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative">
+            <input type="text" id="username" placeholder="Username" 
+                   style="padding:12px 40px 12px 35px;width:250px;background:#262626;border:1px solid #00ff00;color:#00ff00;border-radius:5px"
+                   required>
+            <i class="fa fa-user" style="position:absolute;left:10px;top:14px;color:#00ff00"></i>
+        </div>
+
+        <div style="position:relative">
+            <input type="password" id="password" placeholder="Password" 
+                   style="padding:12px 40px 12px 35px;width:250px;background:#262626;border:1px solid #00ff00;color:#00ff00;border-radius:5px"
+                   required>
+            <i class="fa fa-eye-slash" id="togglePassword" 
+               style="position:absolute;right:10px;top:14px;color:#00ff00;cursor:pointer"
+               onclick="togglePasswordVisibility()"></i>
+            <i class="fa fa-key" style="position:absolute;left:10px;top:14px;color:#00ff00"></i>
+        </div>
+
+        <button type="submit" 
+                style="background:#00ff00;color:#1a1a1a;padding:12px;border:none;border-radius:5px;cursor:pointer;font-weight:bold;transition:0.3s"
+                onmouseover="this.style.boxShadow='0 0 15px #00ff00'" 
+                onmouseout="this.style.boxShadow='none'">
+            <i class="fa fa-sign-in"></i> ACCESS SYSTEM
+        </button>
+
+        <div style="display:flex;justify-content:space-between;font-size:0.9em">
+            <label style="cursor:pointer">
+                <input type="checkbox"> Remember me
+            </label>
+            <a href="#" style="color:#00ff00;text-decoration:none">Forgot Password?</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        const password = document.getElementById('password');
+        const icon = document.getElementById('togglePassword');
+        if (password.type === 'password') {
+            password.type = 'text';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        } else {
+            password.type = 'password';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        }
+    }
+
+    function validateLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        if(username === 'user' && password === '12345678') {
+            window.location.href = 'dashboard.php';
+            return false;
+        } else {
+            alert('Invalid credentials! Access denied');
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

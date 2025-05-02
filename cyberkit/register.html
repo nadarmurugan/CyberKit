@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=VT323&display=swap');
+      
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+      
+        /* Navigation */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+      
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+      
+        .logo i {
+            font-size: 30px;
+            margin-right: 10px;
+            color: #f1c40f;
+        }
+      
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+      
+        nav ul li {
+            margin: 0 15px;
+        }
+      
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+        }
+      
+        nav ul li a:hover {
+            color: #f1c40f;
+            border-bottom: 2px solid #f1c40f;
+        }
+      
+        /* Registration Form */
+        .register-container {
+            max-width: 700px;
+            width: 90%;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            text-align: center;
+            margin: 80px auto 20px auto;
+        }
+      
+        .register-container h2 {
+            font-size: 28px;
+            text-shadow: 0 0 10px cyan;
+            margin-bottom: 20px;
+        }
+      
+        .input-group {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 15px auto;
+            text-align: left;
+        }
+      
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 5px;
+        }
+      
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #f1c40f;
+        }
+      
+        .input-group input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+      
+        .input-group input:focus {
+            box-shadow: 0 0 10px cyan;
+            background: rgba(255, 255, 255, 0.2);
+        }
+      
+        /* Toggle Password Icon */
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #f1c40f;
+            z-index: 10;
+            background: #203a43(0, 0, 0, 0.219);
+            padding: 2px;
+            border-radius: 3px;
+        }
+      
+        /* Error Message Styling */
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 4px;
+            display: block;
+            min-height: 16px;
+            text-align: left;
+            padding-left: 5px;
+        }
+      
+        /* Button Styling */
+        .btn {
+            width: 200px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f1c40f, #e67e22);
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+      
+        .btn:hover {
+            background: linear-gradient(45deg, #e67e22, #f1c40f);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 1);
+        }
+      
+        /* Login link styling */
+        .form-footer {
+            margin-top: 25px;
+            font-size: 16px;
+        }
+      
+        .form-footer a {
+            color: #f1c40f;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+      
+        .form-footer a:hover {
+            color: #e67e22;
+            text-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+        }
+      
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            nav ul {
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+      
+            .register-container {
+                padding: 20px;
+                margin-top: 70px;
+            }
+      
+            .btn {
+                width: 100%;
+            }
+      
+            .input-group {
+                max-width: 100%;
+            }
+        }
+      </style>
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-user-plus"></i> Register
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="register-container">
+        <h2>Create an Account</h2>
+        <form action="register.php" method="POST" onsubmit="return validateForm()">
+            <!-- Username Input -->
+            <div class="input-group">
+                <label for="username"><i class="fas fa-user"></i> Username</label>
+                <div class="input-wrapper">
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <span id="username-error" class="error-message"></span>
+            </div>
+        
+            <!-- Email Input -->
+            <div class="input-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <span id="email-error" class="error-message"></span>
+            </div>
+        
+            <!-- Password Input -->
+            <div class="input-group">
+                <label for="password"><i class="fas fa-lock"></i> Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword('password', this)"></i>
+                </div>
+                <span id="password-error" class="error-message"></span>
+            </div>
+        
+            <!-- Confirm Password Input -->
+            <div class="input-group">
+                <label for="confirm-password"><i class="fas fa-lock"></i> Confirm Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="confirm-password" name="confirm_password" placeholder="Re-enter your password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword('confirm-password', this)"></i>
+                </div>
+                <span id="confirm-password-error" class="error-message"></span>
+            </div>
+        
+            <button type="submit" class="btn">Register</button>
+            
+            <p class="form-footer">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        function togglePassword(id, icon) {
+            let input = document.getElementById(id);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+
+
+
+
+        function validateForm() {
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirm-password").value;
+    let passwordError = document.getElementById("password-error");
+    let confirmPasswordError = document.getElementById("confirm-password-error");
+
+    let passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    passwordError.innerText = "";
+    confirmPasswordError.innerText = "";
+
+    if (!passwordPattern.test(password)) {
+        passwordError.innerText = "Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, one number, and one special character.";
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        confirmPasswordError.innerText = "Passwords do not match!";
+        return false;
+    }
+
+    return true;
+}
+
+    </script>
+
+</body>
+</html>
