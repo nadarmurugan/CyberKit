@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EthicalCyberKit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=VT323&display=swap');
+
+:root {
+    --neon-blue: #00f3ff;
+    --cyber-yellow: #f1c40f;
+    --cyber-green: #00ff9d;
+    --dark-bg: #0a0f1a;
+    --accent-purple: #6c5ce7;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-bg);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(10, 15, 26, 0.98);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 10px #f1c40f, 0 0 20px #f1c40f;
+}
+
+.logo i {
+    font-size: 40px;
+    margin-right: 10px;
+    color: #f1c40f;
+    text-shadow: 0 0 10px #f1c40f;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--neon-blue);
+}
+
+.nav-links i {
+    font-size: 1.2rem;
+}
+
+/* Hamburger Menu - Always Visible */
+.hamburger {
+    display: block; /* Ensure visibility */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--cyber-green);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu - Initially Hidden */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #111;
+    width: 220px;
+    padding: 1rem;
+    border: 1px solid var(--cyber-green);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.mobile-menu a {
+    display: flex;
+    align-items: center;
+    color: var(--cyber-green);
+    padding: 12px;
+    margin: 5px 0;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.mobile-menu a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.mobile-menu a:hover {
+    background-color: #222;
+    color: var(--neon-blue);
+}
+
+/* Show mobile menu when active */
+.mobile-menu.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .mobile-menu.active {
+        display: block;
+    }
+}
+      
+        .about {
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #161b22;
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert('Welcome to EthicalCyberKit - Secure & Ethical Hacking!');
+        }
+        window.onload = showAlert;
+    </script>
+</head>
+<body>
+    
+
+     <!-- Navigation -->
+     <nav>
+        <div class="logo">
+            <i class="fa-solid fa-user-secret"></i>
+            EthicalCyberKit
+        </div>
+        <div class="nav-links">
+            <a href="home.html"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="tools.html"><i class="fa-solid fa-toolbox"></i>Tools</a>
+            <a href="community.html"><i class="fa-solid fa-users"></i>Community</a>
+            <a href="certification.html"><i class="fa-solid fa-certificate"></i>Certifications</a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i>Contact</a>
+            <a href="javascript:history.back();">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+        <!-- Mobile Menu -->
+    <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    
+    <div class="mobile-menu">
+        <a href="profile.html"><i class="fa-solid fa-user"></i>Profile</a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Us</a>
+        <!-- Include other links if needed -->
+    </div>
+    </nav>
+    <section class="about">
+        <div class="container">
+            <h2><i class="fas fa-shield-alt"></i> Our Mission</h2>
+            <p>EthicalCyberKit is a comprehensive platform designed for ethical hackers and cybersecurity enthusiasts. Our goal is to provide a trusted resource for ethical hacking tools, educational materials, and a collaborative community.</p>
+            
+            <h2><i class="fas fa-tools"></i> What We Offer</h2>
+            <ul>
+                <li><i class="fas fa-laptop-code"></i> A curated collection of ethical hacking tools.</li>
+                <li><i class="fas fa-users"></i> A knowledge-sharing community for collaboration.</li>
+                <li><i class="fas fa-book"></i> Resources on cybersecurity best practices.</li>
+                <li><i class="fas fa-gavel"></i> Awareness of cybersecurity ethics and laws.</li>
+                <li><i class="fas fa-globe"></i> Global cybersecurity awareness initiatives.</li>
+                <li><i class="fas fa-link"></i> Integration with industry tools like Kali Linux, Metasploit, and Wireshark.</li>
+            </ul>
+            
+            <h2><i class="fas fa-users-cog"></i> Our Vision</h2>
+            <p>We aim to empower ethical hackers with knowledge and tools to strengthen digital security while promoting responsible hacking practices.</p>
+        </div>
+    </section>
+   <script>
+          document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+    });
+});
+
+   </script>
+</body>
+</html>

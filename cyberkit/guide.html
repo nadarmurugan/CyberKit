@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Hacking Tools Guides - EthicalCyberKit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=VT323&display=swap');
+
+:root {
+    --neon-blue: #00f3ff;
+    --cyber-yellow: #f1c40f;
+    --dark-bg: #0a0f1a;
+    --accent-purple: #6c5ce7;
+    --shadow-color: rgba(0, 243, 255, 0.4);
+    --card-bg: rgba(20, 25, 40, 0.95);
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-bg);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(10, 15, 26, 0.98);
+    backdrop-filter: blur(15px);
+    border-bottom: 2px solid var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 243, 255, 0.1);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 10px var(--cyber-yellow), 0 0 20px var(--cyber-yellow);
+}
+
+.logo i {
+    font-size: 40px;
+    margin-right: 10px;
+    color: var(--cyber-yellow);
+    text-shadow: 0 0 10px var(--cyber-yellow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--neon-blue);
+}
+
+.nav-links i {
+    font-size: 1.2rem;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: var(--neon-blue);
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Card Section */
+.tool-section {
+    background-color: var(--card-bg);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tool-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px var(--shadow-color);
+}
+
+.tool-title {
+    color: var(--cyber-yellow);
+    margin-top: 0;
+    border-bottom: 2px solid var(--neon-blue);
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px var(--cyber-yellow);
+}
+
+.tool-description {
+    color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.tool-features {
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.tool-features li {
+    margin-bottom: 8px;
+    position: relative;
+    color: white;
+}
+
+.tool-features li:before {
+    content: "▹";
+    color: var(--cyber-yellow);
+    position: absolute;
+    left: -20px;
+}
+
+/* Buttons */
+.download-btn {
+    background: var(--accent-purple);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1em;
+    box-shadow: 0 3px 8px var(--shadow-color);
+}
+
+.download-btn:hover {
+    background: #553be8;
+    transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--card-bg);
+    padding: 25px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    width: 350px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 1050;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.active {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal input, .modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--neon-blue);
+    border-radius: 6px;
+    background: rgba(2, 2, 2, 0.1);
+    color: white;
+    font-size: 1em;
+    text-align: center;
+}
+
+.modal input::placeholder, .modal textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.modal button {
+    padding: 10px;
+    background: var(--cyber-yellow);
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.modal button:hover {
+    background: #d4ac0d;
+}
+
+
+
+
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--neon-blue);
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.close-icon:hover {
+    color: var(--cyber-yellow);
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-user-secret"></i>
+            EthicalCyberKit
+        </div>
+        <div class="nav-links">
+            <a href="home.html"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="tools.html"><i class="fa-solid fa-toolbox"></i>Tools</a>
+            <a href="#community"><i class="fa-solid fa-users"></i>Community</a>
+            <a href="#certifications"><i class="fa-solid fa-certificate"></i>Certifications</a>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a>
+            <a href="javascript:history.back();">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h1 class="main-title">Ethical Hacking Tools Guides</h1>
+    
+        <!-- Nmap -->
+        <div class="tool-section">
+            <h2 class="tool-title">Nmap Network Scanner</h2>
+            <p class="tool-description">
+                Powerful network discovery and security auditing tool for identifying devices and services on a network.
+            </p>
+            <ul class="tool-features">
+                <li>🛠️ Advanced port scanning capabilities</li>
+                <li>🔍 Service and OS detection</li>
+                <li>📡 Network inventory management</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn" data-tool="nmap">Download Nmap Guide</button>
+        </div>
+    
+        <!-- Metasploit -->
+        <div class="tool-section">
+            <h2 class="tool-title">Metasploit Framework</h2>
+            <p class="tool-description">
+                Comprehensive penetration testing framework for developing, testing, and executing exploit code.
+            </p>
+            <ul class="tool-features">
+                <li>⚔️ Exploit development and execution</li>
+                <li>🛡️ Vulnerability validation</li>
+                <li>📊 Post-exploitation modules</li>
+            </ul>
+            <button class="download-btn"id="openModalBtn"  data-tool="metasploit">Download Metasploit Guide</button>
+            
+        </div>
+    
+        <!-- Wireshark -->
+        <div class="tool-section">
+            <h2 class="tool-title">Wireshark Analyzer</h2>
+            <p class="tool-description">
+                Industry-standard network protocol analyzer for deep packet inspection and troubleshooting.
+            </p>
+            <ul class="tool-features">
+                <li>📡 Real-time packet capture</li>
+                <li>🔍 Detailed protocol analysis</li>
+                <li>📊 Advanced filtering capabilities</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn" data-tool="wireshark">Download Wireshark Guide</button>
+              
+        </div>
+    
+        <!-- Burp Suite -->
+        <div class="tool-section">
+            <h2 class="tool-title">Burp Suite Professional</h2>
+            <p class="tool-description">
+                Leading web application security testing platform with advanced scanning features.
+            </p>
+            <ul class="tool-features">
+                <li>🌐 Web vulnerability scanning</li>
+                <li>🔍 Proxy-based manual testing</li>
+                <li>📊 Automated security audits</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn" data-tool="burp">Download Burp Suite Guide</button>
+              
+        </div>
+    
+        <!-- Aircrack-ng -->
+        <div class="tool-section">
+            <h2 class="tool-title">Aircrack-ng Suite</h2>
+            <p class="tool-description">
+                Complete wireless network security toolkit for monitoring and penetration testing.
+            </p>
+            <ul class="tool-features">
+                <li>📶 Wi-Fi network analysis</li>
+                <li>🔑 WPA/WPA2-PSK cracking</li>
+                <li>📊 Packet capture and injection</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn"  data-tool="aircrack">Download Aircrack-ng Guide</button>
+            
+        </div>
+    
+        <!-- John the Ripper -->
+        <div class="tool-section">
+            <h2 class="tool-title">John the Ripper</h2>
+            <p class="tool-description">
+                Fast password cracking tool supporting multiple encryption algorithms and hash types.
+            </p>
+            <ul class="tool-features">
+                <li>🔑 Brute-force attacks</li>
+                <li>🔓 Dictionary attacks</li>
+                <li>📊 Hash format detection</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn"  data-tool="john">Download John the Ripper Guide</button>
+               
+        </div>
+    
+        <!-- SQLmap -->
+        <div class="tool-section">
+            <h2 class="tool-title">SQLmap Automation</h2>
+            <p class="tool-description">
+                Automated SQL injection and database takeover tool supporting multiple DBMS.
+            </p>
+            <ul class="tool-features">
+                <li>💾 Database fingerprinting</li>
+                <li>🔍 Automatic SQL injection</li>
+                <li>📊 Data extraction capabilities</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn" data-tool="sqlmap">Download sqlmap Guide</button>
+              
+        </div>
+    
+        <!-- Hydra -->
+        <div class="tool-section">
+            <h2 class="tool-title">THC Hydra</h2>
+            <p class="tool-description">
+                High-performance network login cracker supporting numerous protocols.
+            </p>
+            <ul class="tool-features">
+                <li>🔑 Parallelized attacks</li>
+                <li>📡 Multiple protocol support</li>
+                <li>📊 Flexible attack configuration</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn"  data-tool="hydra">Download Hydra Guide</button>
+        </div>
+    
+        <!-- Snort -->
+        <div class="tool-section">
+            <h2 class="tool-title">Snort IDS/IPS</h2>
+            <p class="tool-description">
+                Real-time network intrusion detection and prevention system.
+            </p>
+            <ul class="tool-features">
+                <li>🔒 Traffic analysis</li>
+                <li>⚡ Protocol analysis</li>
+                <li>📊 Content searching/matching</li>
+            </ul>
+            <button class="download-btn" id="openModalBtn" data-tool="snort">Download Snort Guide</button>
+
+
+        </div>
+
+
+
+<!-- Modal Form -->
+<div id="downloadModal" class="modal" style="display: none;">
+    <h3 id="modalTitle">Download Guide</h3>
+    <span class="close-icon"><i class="fas fa-times"></i></span>
+    <input type="text" id="username" placeholder="Enter your name">
+    <input type="email" id="email" placeholder="Enter your email">
+    <textarea id="purpose" placeholder="Purpose of download"></textarea>
+    <button id="submitDownload">Submit & Download</button>
+</div>
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("downloadModal");
+    const closeModalBtn = document.querySelector(".close-icon");
+    const submitDownloadBtn = document.getElementById("submitDownload");
+    let selectedTool = null;
+
+    const toolConfig = {
+        nmap: { filename: 'nmap-guide.pdf', name: 'Nmap' },
+        metasploit: { filename: 'metasploit-guide.pdf', name: 'Metasploit' },
+        wireshark: { filename: 'wireshark-guide.pdf', name: 'Wireshark' },
+        burp: { filename: 'burp-suite-guide.pdf', name: 'Burp Suite' },
+        hydra: { filename: 'hydra-guide.pdf', name: 'Hydra' },
+        snort: { filename: 'snort-guide.pdf', name: 'Snort' },
+        john: { filename: 'john-the-ripper-guide.pdf', name: 'John the Ripper' },
+        sqlmap: { filename: 'sqlmap-guide.pdf', name: 'SQLMap' },
+        aircrack: { filename: 'aircrack-ng-guide.pdf', name: 'Aircrack-ng' }
+    };
+
+    // Open Modal on Click
+    document.querySelectorAll(".download-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            selectedTool = this.dataset.tool;
+
+            if (!toolConfig[selectedTool]) {
+                alert("Invalid tool selection!");
+                return;
+            }
+
+            document.getElementById("modalTitle").textContent = `Download ${toolConfig[selectedTool].name} Guide`;
+            modal.style.display = "block";
+            modal.classList.add("active");
+
+            // Reset fields on modal open
+            document.getElementById("username").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("purpose").value = "";
+        });
+    });
+
+    // Close Modal
+    function closeModal() {
+        modal.style.display = "none";
+        modal.classList.remove("active");
+
+        // Reset selected tool
+        selectedTool = null;
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener("click", closeModal);
+    }
+
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Submit & Download Button Click Event
+    submitDownloadBtn.addEventListener("click", function () {
+        if (!selectedTool || !toolConfig[selectedTool]) {
+            alert("No tool selected or invalid tool!");
+            closeModal();
+            return;
+        }
+
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const purpose = document.getElementById("purpose").value.trim();
+
+        if (!username || !email || !purpose) {
+            alert("All fields are required!");
+            return;
+        }
+
+        const tool = toolConfig[selectedTool];
+        const toolName = tool.name; // Get tool name (e.g., "Snort")
+
+        // Send data to PHP script
+        fetch("store_download.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&purpose=${encodeURIComponent(purpose)}&tool_name=${encodeURIComponent(toolName)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert(`Data stored successfully! Downloading ${tool.name} guide...`);
+
+                // Proceed with file download
+                const pdfUrl = `uploads/${tool.filename}`;
+                const link = document.createElement("a");
+                link.href = pdfUrl;
+                link.download = tool.filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Refresh Modal
+                closeModal();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Failed to store data. Please try again.");
+        });
+    });
+});
+
+</script>
+</body>
+</html>

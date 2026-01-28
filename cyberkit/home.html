@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EthicalCyberKit - Professional Cybersecurity Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=VT323&display=swap');
+
+:root {
+    --neon-blue: #00f3ff;
+    --cyber-yellow: #f1c40f;
+    --cyber-green: #00ff9d;
+    --dark-bg: #0a0f1a;
+    --accent-purple: #6c5ce7;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-bg);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(10, 15, 26, 0.98);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 10px #f1c40f, 0 0 20px #f1c40f;
+}
+
+.logo i {
+    font-size: 40px;
+    margin-right: 10px;
+    color: #f1c40f;
+    text-shadow: 0 0 10px #f1c40f;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--neon-blue);
+}
+
+.nav-links i {
+    font-size: 1.2rem;
+}
+
+/* Hamburger Menu - Always Visible */
+.hamburger {
+    display: block; /* Ensure visibility */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--cyber-green);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu - Initially Hidden */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #111;
+    width: 220px;
+    padding: 1rem;
+    border: 1px solid var(--cyber-green);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.mobile-menu a {
+    display: flex;
+    align-items: center;
+    color: var(--cyber-green);
+    padding: 12px;
+    margin: 5px 0;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.mobile-menu a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.mobile-menu a:hover {
+    background-color: #222;
+    color: var(--neon-blue);
+}
+
+/* Show mobile menu when active */
+.mobile-menu.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .mobile-menu.active {
+        display: block;
+    }
+}
+   
+
+    /* Enhanced Hero Section */
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 8rem 5%;
+        gap: 4rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin-bottom: 2rem;
+        background: linear-gradient(45deg, var(--neon-blue), var(--accent-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+    }
+
+    /* Professional Buttons */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--neon-blue), var(--accent-purple));
+        color: #000;
+        box-shadow: 0 4px 20px rgba(0, 243, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 30px rgba(0, 243, 255, 0.5);
+    }
+
+    .btn-primary::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+    }
+
+    /* Enhanced Image Section */
+    .hero-image {
+        position: relative;
+        perspective: 1000px;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 15px;
+        transform: rotateY(-10deg) rotateX(5deg);
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(0, 243, 255, 0.2);
+        transition: transform 0.5s ease;
+    }
+
+    .hero-image:hover img {
+        transform: rotateY(0) rotateX(0);
+    }
+
+    /* Animations */
+    @keyframes shine {
+        0% { left: -50%; }
+        100% { left: 150%; }
+    }
+
+    @media (max-width: 1200px) {
+        .hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 4rem 5%;
+        }
+
+        .hero-image {
+            order: -1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+     <!-- Navigation -->
+     <nav>
+        <div class="logo">
+            <i class="fa-solid fa-user-secret"></i>
+            EthicalCyberKit
+        </div>
+        <div class="nav-links">
+            <a href="home.html"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="tools.html"><i class="fa-solid fa-toolbox"></i>Tools</a>
+            <a href="community.html"><i class="fa-solid fa-users"></i>Community</a>
+            <a href="certification.html"><i class="fa-solid fa-certificate"></i>Certifications</a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i>Contact</a>
+            <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i>Logout</a>
+
+        </div>
+
+        <!-- Mobile Menu -->
+    <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    
+    <div class="mobile-menu">
+        <a href="profile.html"><i class="fa-solid fa-user"></i>Profile</a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Us</a>
+        <!-- Include other links if needed -->
+    </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Advanced Cybersecurity Solutions for Modern Threats</h1>
+            <p>Empower your digital defense with cutting-edge tools, expert training, and a global network of security professionals.</p>
+            <a href="tools.html" class="btn btn-primary">
+                <i class="fa-solid fa-lock-open"></i>
+                Explore Tools
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="img/bg1.jpg" alt="Cybersecurity Interface">
+        </div>
+    </section>
+    <script>
+              document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+    });
+});
+
+    </script>
+</body>
+</html>

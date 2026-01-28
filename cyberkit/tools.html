@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EthicalCyberKit - Hacking Tools</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=VT323&display=swap');
+
+:root {
+    --neon-blue: #00f3ff;
+    --cyber-yellow: #f1c40f;
+    --cyber-green: #00ff9d;
+    --dark-bg: #0a0f1a;
+    --accent-purple: #6c5ce7;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-bg);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(10, 15, 26, 0.98);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 10px #f1c40f, 0 0 20px #f1c40f;
+}
+
+.logo i {
+    font-size: 40px;
+    margin-right: 10px;
+    color: #f1c40f;
+    text-shadow: 0 0 10px #f1c40f;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--neon-blue);
+}
+
+.nav-links i {
+    font-size: 1.2rem;
+}
+
+/* Hamburger Menu - Always Visible */
+.hamburger {
+    display: block; /* Ensure visibility */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--cyber-green);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu - Initially Hidden */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #111;
+    width: 220px;
+    padding: 1rem;
+    border: 1px solid var(--cyber-green);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.mobile-menu a {
+    display: flex;
+    align-items: center;
+    color: var(--cyber-green);
+    padding: 12px;
+    margin: 5px 0;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.mobile-menu a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.mobile-menu a:hover {
+    background-color: #222;
+    color: var(--neon-blue);
+}
+
+/* Show mobile menu when active */
+.mobile-menu.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .mobile-menu.active {
+        display: block;
+    }
+}
+
+/* Card Styling */
+.tool-card {
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid var(--cyber-green);
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--cyber-green);
+}
+
+.category-badge {
+    background: var(--cyber-green);
+    color: #000000;
+}
+
+.tool-column {
+    transition: all 0.3s ease;
+}
+
+.hidden-card {
+    display: none !important;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-user-secret"></i>
+            EthicalCyberKit
+        </div>
+        <div class="nav-links">
+            <a href="home.html"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="tools.html"><i class="fa-solid fa-toolbox"></i>Tools</a>
+            <a href="community.html"><i class="fa-solid fa-users"></i>Community</a>
+            <a href="certification.html"><i class="fa-solid fa-certificate"></i>Certifications</a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i>Contact</a>
+            <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i>Logout</a>
+
+        </div>
+
+        <!-- Mobile Menu -->
+    <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    
+    <div class="mobile-menu">
+        <a href="profile.html"><i class="fa-solid fa-user"></i>Profile</a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Us</a>
+        <!-- Include other links if needed -->
+    </div>
+    </nav>
+
+    <!-- Tools Section -->
+    <div class="container py-5">
+        <h1 class="text-center mb-4" style="color: var(--cyber-green);">Ethical Hacking Toolkit</h1>
+
+
+        
+<!-- Search Bar -->
+<div class="row mb-4">
+    <div class="col-md-8 mx-auto position-relative">
+        <input type="text" id="searchInput" class="form-control bg-dark text-light ps-5" 
+               placeholder="Search tools... (e.g., network scanner)" onkeyup="searchTools()">
+        <i class="fas fa-search position-absolute text-light" 
+           style="left: 25px; top: 50%; transform: translateY(-50%); font-size: 1.2rem;"></i>
+    </div>
+</div>
+
+        <!-- Tools Grid -->
+        <div class="row g-4" id="toolsContainer">
+
+
+            <div class="row">
+                <!-- Tool Card Template -->
+                <div class="row">
+                    <!-- Nmap -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Nmap</h5>
+                                <span class="badge bg-primary">Network Analysis</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Network mapping and vulnerability detection tool.</p>
+                                <ul class="list-unstyled">
+                                    <li>🛠️ Port scanning</li>
+                                    <li>🔍 Service detection</li>
+                                    <li>📡 Network inventory</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Metasploit -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Metasploit</h5>
+                                <span class="badge bg-danger">Penetration Testing</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Framework for developing and executing exploits.</p>
+                                <ul class="list-unstyled">
+                                    <li>⚔️ Exploit development</li>
+                                    <li>🛡️ Vulnerability validation</li>
+                                    <li>📊 Security assessments</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Wireshark -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Wireshark</h5>
+                                <span class="badge bg-info">Network Analysis</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Powerful network protocol analyzer.</p>
+                                <ul class="list-unstyled">
+                                    <li>📡 Packet inspection</li>
+                                    <li>🔍 Deep network analysis</li>
+                                    <li>📊 Traffic monitoring</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Burp Suite -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Burp Suite</h5>
+                                <span class="badge bg-warning">Web Security</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Web vulnerability scanning and security testing.</p>
+                                <ul class="list-unstyled">
+                                    <li>🌐 Web application security</li>
+                                    <li>🔎 Proxy-based testing</li>
+                                    <li>📊 Automated scanning</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Aircrack-ng -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Aircrack-ng</h5>
+                                <span class="badge bg-dark">Wireless Security</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Wireless security testing and monitoring.</p>
+                                <ul class="list-unstyled">
+                                    <li>📶 Wi-Fi penetration testing</li>
+                                    <li>🔑 WEP/WPA cracking</li>
+                                    <li>📊 Packet capturing</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- John the Ripper -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">John the Ripper</h5>
+                                <span class="badge bg-secondary">Password Cracking</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Fast and efficient password cracking tool.</p>
+                                <ul class="list-unstyled">
+                                    <li>🔑 Password recovery</li>
+                                    <li>🔓 Brute-force attacks</li>
+                                    <li>📊 Hash cracking</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- SQLmap -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">SQLmap</h5>
+                                <span class="badge bg-success">Database Security</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Automated SQL injection tool.</p>
+                                <ul class="list-unstyled">
+                                    <li>💾 Database exploitation</li>
+                                    <li>🔍 SQL injection detection</li>
+                                    <li>📊 Data extraction</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                
+                    <!-- Hydra -->
+                    <div class="col-md-6 col-lg-4 tool-column">
+                        <div class="tool-card card h-100 shadow-sm">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Hydra</h5>
+                                <span class="badge bg-danger">Credential Attacks</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Fast network login cracker.</p>
+                                <ul class="list-unstyled">
+                                    <li>🔑 Brute-force attacks</li>
+                                    <li>📡 Multi-protocol support</li>
+                                    <li>📊 Automated cracking</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Snort -->
+    <div class="col-md-6 col-lg-4 tool-column">
+        <div class="tool-card card h-100 shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Snort</h5>
+                <span class="badge bg-secondary">Intrusion Detection</span>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Real-time intrusion detection and prevention system.</p>
+                <ul class="list-unstyled">
+                    <li>🔒 Threat detection</li>
+                    <li>⚡ Packet logging</li>
+                    <li>📊 Security monitoring</li>
+                </ul>
+            </div>
+            <div class="card-footer text-center">
+                <a href="guide.html" class="btn btn-outline-success btn-sm me-2">Download Guide</a>
+                <a href="videos.html" class="btn btn-success btn-sm">Video Tutorial</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+                
+            
+
+    <!-- Disclaimer -->
+    <div class="container mt-4">
+        <div class="alert alert-danger text-center">
+            ⚠️ All tools should be used only on systems you have explicit permission to test. 
+            Unauthorized access is illegal.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+function searchTools() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let toolCards = document.querySelectorAll(".tool-column");
+
+            toolCards.forEach(card => {
+                let toolName = card.querySelector("h5").innerText.toLowerCase();
+                let toolDesc = card.querySelector(".card-text").innerText.toLowerCase();
+
+                if (toolName.includes(input) || toolDesc.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+    });
+});
+
+</script>
+</html>
+
+
+
+

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Certifications</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --neon-green: #00ff9d;
+    --neon-blue: #00f3ff;
+    --dark-bg: #0a0f1a;
+    --accent-yellow: #f1c40f;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(10, 15, 26, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--neon-blue);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 10px var(--accent-yellow);
+}
+
+.logo i {
+    font-size: 35px;
+    margin-right: 10px;
+    color: var(--accent-yellow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-links a:hover {
+    color: var(--neon-blue);
+}
+
+
+        .container {
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: title-glow 2s ease-in-out infinite alternate;
+        }
+
+        .cert-card {
+            background: rgba(28, 35, 49, 0.9);
+            border: 1px solid var(--neon-blue);
+            border-radius: 8px;
+            margin: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+        }
+
+        .cert-card:hover::before {
+            animation: scan 4s linear infinite;
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+        }
+
+        .cert-details {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+
+        .cert-details li {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .cert-details i {
+            margin-right: 0.5rem;
+            color: var(--matrix-green);
+        }
+
+        .btn-cyber {
+            background: linear-gradient(45deg, #1a237e, #0d47a1);
+            border: 1px solid var(--neon-blue);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cyber:hover {
+            background: linear-gradient(45deg, #0d47a1, #1a237e);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-200%) rotate(45deg); }
+            100% { transform: translateY(200%) rotate(45deg); }
+        }
+
+        @keyframes title-glow {
+            0% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.2); }
+            100% { text-shadow: 0 0 20px rgba(0, 243, 255, 0.4), 0 0 30px rgba(188, 19, 254, 0.4); }
+        }
+
+        .cert-description {
+            min-height: 80px;
+            margin-bottom: 1rem;
+            color: #a0aec0;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .beginner { background: rgba(32, 194, 14, 0.2); color: var(--matrix-green); }
+        .intermediate { background: rgba(255, 165, 0, 0.2); color: orange; }
+        .advanced { background: rgba(255, 0, 0, 0.2); color: red; }
+    </style>
+</head>
+<body>
+
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-user-secret"></i>
+            EthicalCyberKit
+        </div>
+        <div class="nav-links">
+            <a href="home.html"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="tools.html"><i class="fa-solid fa-toolbox"></i>Tools</a>
+            <a href="#community"><i class="fa-solid fa-users"></i>Community</a>
+            <a href="#certifications"><i class="fa-solid fa-certificate"></i>Certifications</a>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a>
+            <a href="javascript:history.back();">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Cyber Security Certifications</h1>
+            <p class="text-muted">Prove your skills in the digital battlefield</p>
+        </div>
+
+        <div class="row">
+            <!-- CEH Card -->
+            <div class="col-lg-4 col-md-6">
+                <a href="ceh-test.html" class="text-decoration-none">
+                    <div class="cert-card">
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <i class="fas fa-user-secret cert-icon"></i>
+                        <h3>CEH v12</h3>
+                        <div class="cert-description">
+                            Certified Ethical Hacker - Master penetration testing and vulnerability assessment
+                        </div>
+                        <ul class="cert-details">
+                            <li><i class="fas fa-clock"></i>Duration: 4 hours</li>
+                            <li><i class="fas fa-question-circle"></i>125 Questions</li>
+                            <li><i class="fas fa-laptop-code"></i>Practical Challenges</li>
+                            <li><i class="fas fa-shield-alt"></i>EC-Council Certified</li>
+                        </ul>
+                        <button class="btn-cyber w-100">Start Challenge</button>
+                    </div>
+                </a>
+            </div>
+
+            <!-- OSCP Card -->
+            <div class="col-lg-4 col-md-6">
+                <a href="oscp-test.html" class="text-decoration-none">
+                    <div class="cert-card">
+                        <span class="difficulty-badge advanced">Advanced</span>
+                        <i class="fas fa-skull cert-icon"></i>
+                        <h3>OSCP</h3>
+                        <div class="cert-description">
+                            Offensive Security Certified Professional - Real-world penetration testing
+                        </div>
+                        <ul class="cert-details">
+                            <li><i class="fas fa-clock"></i>24-Hour Exam</li>
+                            <li><i class="fas fa-network-wired"></i>Proctored Lab Environment</li>
+                            <li><i class="fas fa-bug"></i>Exploit Development</li>
+                            <li><i class="fas fa-trophy"></i>Highly Practical Exam</li>
+                        </ul>
+                        <button class="btn-cyber w-100">Begin Assault</button>
+                    </div>
+                </a>
+            </div>
+
+            <!-- CompTIA Security+ Card -->
+            <div class="col-lg-4 col-md-6">
+                <a href="comptia-security-test.html" class="text-decoration-none">
+                    <div class="cert-card">
+                        <span class="difficulty-badge beginner">Entry Level</span>
+                        <i class="fas fa-shield-alt cert-icon"></i>
+                        <h3>Security+</h3>
+                        <div class="cert-description">
+                            CompTIA Security+ - Foundational cybersecurity skills
+                        </div>
+                        <ul class="cert-details">
+                            <li><i class="fas fa-clock"></i>90 Minutes</li>
+                            <li><i class="fas fa-book"></i>90 Questions</li>
+                            <li><i class="fas fa-certificate"></i>DoD Approved</li>
+                            <li><i class="fas fa-globe"></i>Vendor Neutral</li>
+                        </ul>
+                        <button class="btn-cyber w-100">Launch Test</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="text-muted" style="border-top: 1px solid #1c2331; padding: 2rem 0;">
+                    <small>Ready to prove your skills in cyberspace? Choose your certification and begin your journey!</small>
+                    <div class="mt-2">
+                        <i class="fas fa-terminal text-success me-2"></i>
+                        <span class="text-muted">More certifications coming soon...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> COMPTIA-SECURITY Certification Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Teko:wght@500&family=Exo+2:wght@300;500&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --cyber-purple: #bc13fe;
+            --matrix-green: #20c20e;
+        }
+
+        body {
+            background-color: #0a0f1a;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            background-image: 
+                linear-gradient(rgba(11, 15, 25, 0.9), rgba(11, 15, 25, 0.9)),
+                url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+        }
+
+        .cyber-border {
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .modal-content {
+            background: #1c2331;
+            color: white;
+            border: 2px solid var(--cyber-purple);
+        }
+
+        .form-select {
+            background-color: #2d3748;
+            color: white;
+            border: 1px solid var(--neon-blue);
+        }
+
+        .form-select:focus {
+            border-color: var(--cyber-purple);
+            box-shadow: 0 0 10px rgba(188, 19, 254, 0.25);
+        }
+
+        .test-intro {
+            background: rgba(28, 35, 49, 0.9);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--matrix-green);
+        }
+
+        .hacker-icon {
+            font-size: 4rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+   /* Certificate Container Styles */
+#certificate {
+    background: linear-gradient(45deg, #0a0a2e, #1a1a4a);
+    min-height: 100vh;
+}
+
+.certificate-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    position: relative;
+}
+
+
+/* Close Icon - Enhanced */
+.close-icon {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 1.8rem;
+    color: #ff003c;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    background: rgba(10, 10, 46, 0.9);
+    border-radius: 50%;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ff003c;
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+}
+
+.close-icon:hover {
+    transform: rotate(90deg) scale(1.1);
+    color: #ff0062;
+    border-color: #ff0062;
+    box-shadow: 0 0 15px rgba(255, 0, 98, 0.5);
+    background: rgba(10, 10, 46, 0.95);
+}
+
+/* Cyber Border Effect */
+.cyber-border {
+    background: #0a0a2e;
+    border: 3px solid #00f7ff;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+}
+
+.cyber-border::before,
+.cyber-border::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #00f7ff;
+}
+
+.cyber-border::before {
+    top: -10px;
+    left: -10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.cyber-border::after {
+    bottom: -10px;
+    right: -10px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Typography */
+#certificate h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00f7ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+#certificate h2 {
+    font-family: 'Teko', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 1.5px;
+    margin: 1rem 0;
+    background: linear-gradient(90deg, #00f7ff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#certificate p {
+    font-family: 'Exo 2', sans-serif;
+    color: #e0e0e0;
+    margin: 0.5rem 0;
+}
+
+/* Score Badge */
+.cyber-border .cyber-border {
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+#certScore {
+    color: #00ff88;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Buttons */
+#certificate .btn {
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+#certificate .btn-success {
+    background: #00ff88;
+    color: #0a0a2e;
+    border-color: #00ff88;
+}
+
+#certificate .btn-success:hover {
+    background: transparent;
+    color: #00ff88;
+}
+
+#certificate .btn-outline-info {
+    border-color: #00f7ff;
+    color: #00f7ff;
+}
+
+#certificate .btn-outline-info:hover {
+    background: #00f7ff;
+    color: #0a0a2e;
+}
+
+
+
+/* Certificate ID */
+#certID {
+    font-family: 'Source Code Pro', monospace;
+    color: #00ff88;
+    letter-spacing: 2px;
+}
+
+/* Background Effects */
+.certificate-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.certificate-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(0, 247, 255, 0.1) 10px,
+        rgba(0, 247, 255, 0.1) 20px
+    );
+    pointer-events: none;
+}
+
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--neon-blue);
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.close-icon:hover {
+    color: var(--cyber-yellow);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .certificate-container {
+        margin: 1rem;
+    }
+    
+    #certificate h1 {
+        font-size: 1.8rem;
+    }
+    
+    #certificate h2 {
+        font-size: 2rem;
+    }
+    
+    .cyber-border {
+        padding: 2rem !important;
+    }
+}
+
+
+/* Print Styles */
+@media print {
+    #certificate {
+        background: white !important;
+    }
+    
+    .cyber-border {
+        border-color: #000 !important;
+        box-shadow: none !important;
+    }
+    
+    #certificate h1 {
+        color: #000 !important;
+    }
+    
+    #certificate h2 {
+        background: none !important;
+        color: #000 !important;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Registration Modal -->
+    <div class="modal fade show" id="registrationModal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.8);">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content cyber-border">
+                <div class="modal-header border-secondary">
+                    <h3 class="modal-title"><i class="fas fa-user-secret me-2"></i>Exam Registration</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="registrationForm">
+                        <div class="mb-4">
+                            <i class="fas fa-times close-icon" onclick="closeCertificate()"></i>
+                            <label for="name" class="form-label"><i class="fas fa-id-card me-2"></i>Full Name</label>
+                            <input type="text" class="form-control bg-dark text-white" id="name" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="class" class="form-label"><i class="fas fa-graduation-cap me-2"></i>Education Level</label>
+                            <select class="form-select" id="class" required>
+                                <option value="">Select your class/group</option>
+                                <option value="SSC">SSC</option>
+                                <option value="HSC">HSC</option>
+                                <option value="BSc CS">BSc Computer Science</option>
+                                <option value="BSc IT">BSc Information Technology</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+                        <section class="test-intro" style="background: #f9f9f9; padding: 15px; border-left: 5px solid #007bff; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); margin: 20px 0;">
+                            <h4 style="color: #333; font-size: 20px; display: flex; align-items: center;">
+                                <i class="fas fa-info-circle" style="margin-right: 10px; color: #007bff;"></i> About CompTIA Security+ Certification
+                            </h4>
+                            <p class="text-muted" style="color: #555; font-size: 16px; line-height: 1.5;">
+                                The <strong>CompTIA Security+</strong> is a globally recognized certification that validates essential cybersecurity knowledge and skills. It is designed for IT professionals looking to establish a career in security, covering topics like threat detection, risk management, and network security. 
+                                <br><span style="font-weight: bold;">Exam Details:</span> 
+                                <i class="fas fa-clock" style="color: #007bff;"></i> 90-minute exam |
+                                <i class="fas fa-shield-alt" style="color: #28a745;"></i> Performance-based and multiple-choice questions |
+                                <i class="fas fa-globe" style="color: #dc3545;"></i> Globally Recognized Certification
+                            </p>
+                            <p class="text-muted" style="color: #555; font-size: 16px;">
+                                This certification demonstrates your ability to assess security risks, implement mitigation strategies, and secure networks against cyber threats.
+                            </p>
+                        </section>
+                        
+                        
+                        
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-play me-2"></i>Start Exam
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5" id="testContainer" style="display: none; background-color: #0a0a0a; border: 2px solid #00ff00; border-radius: 10px; color: #00ff00;">
+    <div class="text-center mb-5" style="border-bottom: 1px solid #00ff0040; padding-bottom: 20px;">
+        <i class="fas fa-user-secret hacker-icon" style="font-size: 3rem; color: #00ff00; text-shadow: 0 0 10px #00ff0080;"></i>
+        <h2 style="color: #00ff00;">COMPTIA-SECURITY Certification Exam</h2>
+        <p style="color: #00ff00aa;">Test your ethical hacking knowledge - 10 Questions</p>
+    </div>
+
+    <div id="questions" style="padding: 0 15px;">
+
+
+        <!-- Add 8 more questions following the same pattern -->
+        <!-- [Questions 3-10 would be similar with different icons and content] -->
+    </div>
+
+    <div class="d-flex justify-content-between mt-4" style="border-top: 1px solid #00ff0040; padding-top: 20px;">
+        <button class="btn" id="prevBtn" style="display: none; background-color: #00ff00; color: #000;">
+            <i class="fas fa-arrow-left me-2"></i>Previous
+        </button>
+        <span id="progress" style="color: #00ff00aa;">Question 1 of 10</span>
+        <button class="btn" id="nextBtn" style="background-color: #00ff00; color: #000;">
+            Next<i class="fas fa-arrow-right ms-2"></i>
+        </button>
+    </div>
+</div>
+
+    <!-- Certificate -->
+    <div class="container py-5 text-center" id="certificate" style="display: none;">
+        <div class="certificate-container">
+            <i class="fas fa-times close-icon" onclick="closeCertificate()"></i>
+            <div class="cyber-border p-5 position-relative">
+                <div class="position-absolute top-0 start-0 m-3">
+                    <i class="fas fa-certificate fa-3x text-warning"></i>
+                </div>
+                <h1 class="mb-4">COMPTIA-SECURITY TEST</h1>
+                <p class="lead">This is to certify that</p>
+                <h2 class="text-primary" id="certName">John Doe</h2>
+                <p class="lead">of <span class="text-info" id="certClass">BSc Computer Science</span> has successfully completed the COMPTIA-SECURITY Certification Exam.</p>
+                <div class="cyber-border p-3 my-4 d-inline-block">
+                    <h4 class="m-0">Score: <span id="certScore">85</span>%</h4>
+                </div>
+                <p class="lead">Completed on: <span id="certDate"></span> at <span id="certTime"></span></p>
+                <p class="lead">Certificate ID: <span id="certID">comtia-sceurity-001</span></p>
+                <div class="mt-4">
+                    <button class="btn btn-success me-2" onclick="downloadCertificate()">
+                        <i class="fas fa-download me-2"></i>Download
+                    </button>
+                    <button class="btn btn-outline-info share-button" onclick="shareCertificate()">
+                        <i class="fas fa-share me-2"></i>Share
+                    </button>
+                    <button class="btn btn-outline-info" onclick="retakeTest()">
+                        <i class="fas fa-redo me-2"></i>Retake Test
+                    </button>
+
+                        <button class="btn btn-outline-primary" onclick="saveCertificate()">
+                            <i class="fas fa-save me-2"></i>Save Certificate
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+   <script>
+ const questions = [
+    {
+        question: "<i class='fas fa-shield-alt me-2'></i>What is the primary objective of cybersecurity?",
+        options: ["To prevent all cyberattacks", "To ensure confidentiality, integrity, and availability of data", "To monitor network traffic", "To hack into unauthorized systems"],
+        correct: 1,
+        explanation: "Cybersecurity focuses on maintaining the confidentiality, integrity, and availability (CIA triad) of information."
+    },
+    {
+        question: "<i class='fas fa-network-wired me-2'></i>Which protocol is used to securely transfer files over a network?",
+        options: ["FTP", "HTTP", "SFTP", "Telnet"],
+        correct: 2,
+        explanation: "SFTP (Secure File Transfer Protocol) is used to securely transfer files over a network using SSH."
+    },
+    {
+        question: "<i class='fas fa-lock me-2'></i>Which encryption method is used to protect data in transit?",
+        options: ["AES", "RSA", "SHA-256", "MD5"],
+        correct: 1,
+        explanation: "RSA (Rivest-Shamir-Adleman) is commonly used for encrypting data in transit, especially in SSL/TLS protocols."
+    },
+    {
+        question: "<i class='fas fa-user-secret me-2'></i>What is a common indicator of a phishing attack?",
+        options: ["An email from a known sender", "A request to update your password through an official company website", "Urgent messages requesting personal information or login credentials", "A software update notification from a trusted source"],
+        correct: 2,
+        explanation: "Phishing attacks often involve urgent messages asking for sensitive information through deceptive emails or links."
+    },
+    {
+        question: "<i class='fas fa-exclamation-triangle me-2'></i>Which security measure helps prevent brute-force attacks on login systems?",
+        options: ["Strong passwords only", "Account lockout policies", "Disabling firewalls", "Using the same password for all accounts"],
+        correct: 1,
+        explanation: "Account lockout policies limit failed login attempts, helping prevent brute-force attacks."
+    },
+    {
+        question: "<i class='fas fa-laptop-code me-2'></i>Which cybersecurity framework is widely used for managing risk?",
+        options: ["NIST", "ISO 9001", "ITIL", "Agile"],
+        correct: 0,
+        explanation: "The NIST (National Institute of Standards and Technology) cybersecurity framework is commonly used for risk management."
+    },
+    {
+        question: "<i class='fas fa-bug me-2'></i>Which attack exploits vulnerabilities in web applications to inject malicious scripts?",
+        options: ["MITM", "XSS", "DDoS", "ARP Poisoning"],
+        correct: 1,
+        explanation: "Cross-Site Scripting (XSS) injects malicious scripts into web applications, affecting users' browsers."
+    },
+    {
+        question: "<i class='fas fa-database me-2'></i>What is the purpose of a firewall in network security?",
+        options: ["To encrypt data", "To scan for viruses", "To monitor and control incoming and outgoing traffic", "To store backup data"],
+        correct: 2,
+        explanation: "Firewalls monitor and control network traffic based on predefined security rules."
+    },
+    {
+        question: "<i class='fas fa-server me-2'></i>Which type of malware spreads without user interaction?",
+        options: ["Trojan", "Adware", "Worm", "Spyware"],
+        correct: 2,
+        explanation: "Worms spread automatically across networks without requiring user interaction."
+    },
+    {
+        question: "<i class='fas fa-user-shield me-2'></i>Which principle ensures users have only the necessary permissions for their job roles?",
+        options: ["Least Privilege", "Defense in Depth", "Zero Trust", "Multi-Factor Authentication"],
+        correct: 0,
+        explanation: "The principle of Least Privilege (PoLP) ensures users have only the minimum level of access needed to perform their tasks."
+    }
+];
+
+
+
+let currentQuestion = 0;
+let score = 0;
+const passingMarks = 5;
+
+// Function to load questions
+function loadQuestion() {
+    const questionContainer = document.getElementById('questions');
+    questionContainer.innerHTML = `
+        <div class="mb-4">
+            <h5>${questions[currentQuestion].question}</h5>
+            ${questions[currentQuestion].options.map((option, index) => `
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="option" id="option${index}" value="${index}">
+                    <label class="form-check-label" for="option${index}">${option}</label>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    document.getElementById('progress').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+    document.getElementById('prevBtn').style.display = currentQuestion === 0 ? 'none' : 'inline-block';
+}
+
+// Event listener for registration form submission
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const classGroup = document.getElementById('class').value;
+
+    // Set certificate details
+    document.getElementById('certName').textContent = name;
+    document.getElementById('certClass').textContent = classGroup;
+
+    // Hide registration modal and show test container
+    document.getElementById('registrationModal').style.display = 'none';
+    document.getElementById('testContainer').style.display = 'block';
+
+    // Load the first question
+    loadQuestion();
+});
+
+// Event listener for next button
+document.getElementById('nextBtn').addEventListener('click', function() {
+    const selectedOption = document.querySelector('input[name="option"]:checked');
+    if (selectedOption) {
+        const answer = parseInt(selectedOption.value);
+        if (answer === questions[currentQuestion].correct) {
+            score++; // Increase score for correct answer
+        }
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            loadQuestion();
+        } else {
+            // Check if user passed or failed
+            document.getElementById('testContainer').style.display = 'none';
+            if (score >= passingMarks) {
+                // Passed: Show certificate
+                document.getElementById('certificate').style.display = 'block';
+                document.getElementById('certScore').textContent = `${score}/10`;
+                const now = new Date();
+                document.getElementById('certDate').textContent = now.toLocaleDateString();
+                document.getElementById('certTime').textContent = now.toLocaleTimeString();
+            } else {
+                // Failed: Show retry or home option
+                document.getElementById('failContainer').style.display = 'block';
+                document.getElementById('failMessage').textContent = `You scored ${score}/10. You need at least 5 to pass.`;
+            }
+        }
+    } else {
+        alert("Please select an answer.");
+    }
+});
+
+// Event listener for previous button
+document.getElementById('prevBtn').addEventListener('click', function() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+    }
+});
+
+// Retry Test
+function retryTest() {
+    currentQuestion = 0;
+    score = 0;
+    document.getElementById('failContainer').style.display = 'none';
+    document.getElementById('testContainer').style.display = 'block';
+    loadQuestion();
+}
+
+// Go to Home
+function goToHome() {
+    window.location.href = "home.html"; // Change to actual home page
+}
+
+function downloadCertificate() {
+    const element = document.getElementById('certificate');
+
+    // Hide buttons before generating PDF
+    document.querySelectorAll('.btn, .close-icon').forEach(btn => btn.style.display = 'none');
+
+    // Adjust PDF size and remove extra margins
+    const opt = {
+        margin: [10, 10, 10, 10], // Top, Left, Bottom, Right
+        filename: 'COMPTIA-SECURITY-Certificate.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', // Adjust this to 'a3' or custom size if needed
+            orientation: 'portrait' // Change to 'landscape' if necessary
+        }
+    };
+
+    html2pdf().from(element).set(opt).save().then(() => {
+        // Restore buttons after PDF generation
+        document.querySelectorAll('.btn, .close-icon').forEach(btn => btn.style.display = '');
+    });
+}
+
+
+
+function saveCertificate() {
+    // Ensure jsPDF is available
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+        console.error("jsPDF is not loaded.");
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+
+    let certName = document.getElementById("certName").innerText;
+    let certClass = document.getElementById("certClass").innerText;
+    let certScore = document.getElementById("certScore").innerText;
+    let certID = document.getElementById("certID").innerText;
+    let certDate = new Date().toISOString().split("T")[0];
+    let certTime = new Date().toLocaleTimeString();
+
+    doc.text("Certified Ethical Hacker", 20, 20);
+    doc.text(`Name: ${certName}`, 20, 40);
+    doc.text(`Class: ${certClass}`, 20, 50);
+    doc.text(`Score: ${certScore}%`, 20, 60);
+    doc.text(`Certificate ID: ${certID}`, 20, 70);
+    doc.text(`Date: ${certDate}`, 20, 80);
+    doc.text(`Time: ${certTime}`, 20, 90);
+
+    // Convert PDF to Blob
+    let pdfBlob = doc.output("blob");
+    let formData = new FormData();
+    formData.append("certName", certName);
+    formData.append("certClass", certClass);
+    formData.append("certScore", certScore);
+    formData.append("certID", certID);
+    formData.append("certDate", certDate);
+    formData.append("certTime", certTime);
+    formData.append("certificateFile", pdfBlob, `${certID}.pdf`);
+
+    // Send data to PHP
+    fetch("save_certificate.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("COMPTIA-SECURITY Certificate Saved Successfully!");
+        console.log(data);
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+
+
+
+
+
+    function shareCertificate() {
+    let certName = document.getElementById('certName').textContent;
+    let certID = document.getElementById('certID') ? document.getElementById('certID').textContent : '';
+    let shareText = `Check out my certificate: ${certName} - ID: ${certID}`;
+    let encodedText = encodeURIComponent(shareText);
+
+    // Check if share links already exist to prevent duplication
+    let existingShareDiv = document.getElementById('shareLinks');
+    if (!existingShareDiv) {
+        let shareDiv = document.createElement('div');
+        shareDiv.id = 'shareLinks';
+        shareDiv.classList.add('mt-3'); // Add margin for spacing
+        shareDiv.innerHTML = `
+            <a href='https://api.whatsapp.com/send?text=${encodedText}' target='_blank' class='btn btn-success me-2'>WhatsApp</a>
+            <a href='https://www.linkedin.com/shareArticle?mini=true&url=https://example.com/certificate&title=${encodedText}' target='_blank' class='btn btn-primary me-2'>LinkedIn</a>
+            <a href='https://twitter.com/intent/tweet?text=${encodedText}' target='_blank' class='btn btn-info me-2'>Twitter</a>
+            <a href='https://www.facebook.com/sharer/sharer.php?u=https://example.com/certificate' target='_blank' class='btn btn-primary'>Facebook</a>
+        `;
+        
+        document.getElementById('certificate').appendChild(shareDiv);
+    }
+}
+
+
+function retakeTest() {
+    location.href = "comptia-security-test.html"; // Redirects to ceh-test.html
+}
+
+function closeCertificate() {
+    window.location.href = "certification.html"; // Redirects to certificates.html
+}
+
+   </script>
+</body>
+</html>
